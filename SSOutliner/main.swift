@@ -15,11 +15,9 @@ guard args.count > 1 else {
 }
 
 let shouldRound = args.contains("-r") || args.contains("--rounded")
-let cornerRadius: CGFloat = shouldRound ? 7.0 : 0.0
+let cornerRadius: CGFloat = shouldRound ? 5.0 : 0.0
 
-var url = URL(fileURLWithPath: args[0])
-url.deleteLastPathComponent()
-url.appendPathComponent("\(args.last!)")
+var url = URL(fileURLWithPath: args.last!)
 
 guard let img = NSImage(contentsOf: url) else {
     print("Can't load image at \(url)")
