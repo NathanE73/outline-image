@@ -13,5 +13,5 @@ func printUsage() {
     print("flags:")
     print("  -r, --rounded")
     print("      Round the corners. Suitable for window screenshots.")
-    print("\nOutput is saved to separate file.")
+    print("\nOutput overwrites input file.\n")
 }
