@@ -1,5 +1,5 @@
 # ssoutliner
-Tiny cli app for adding outlines to images (usually screenshots).
+Tiny CLI macOS app for adding outlines to images (usually screenshots). Outlines can have hard or rounded corners.
 
 Use -r switch to round the corners, as for window screenshots.
 
@@ -14,3 +14,8 @@ flags:
 
 Output overwrites input file.
 ```
+
+# samples
+
+![Screenshot Without Outline](docs/Screenshot.png)
+![Screenshot With Rounded-corner Outline](docs/Screenshot_ssoutlined.png)
