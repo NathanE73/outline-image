@@ -9,13 +9,17 @@
 import Foundation
 
 func printUsage() {
-    print("\nusage: ssoutliner [-r] file")
-    print("flags:")
-    print("  -r, --rounded")
-    print("      Round the corners. Suitable for window screenshots.")
-    print("  -o, --overwrite")
-    print("      Overwrite the input file.")
-    print("If you don't supply -o, output is written to originalfilename_ssoutlined.png")
+    print("""
+    usage: ssoutliner [-r] [-o] files...
+    flags:
+      -r, --rounded
+          Round the corners. Suitable for window screenshots.
+      -o, --overwrite
+          Overwrite the input file.
+          Otherwise, output is written to originalfilename_ssoutlined.png.
+      -h, --help
+          Display this help information and exit.
+    """)
 }
 
 
@@ -44,7 +48,7 @@ func readArgs(_ args: [String]) -> Instructions {
             shouldOverwrite = true
             continue
         }
-        if thing.contains("-o") || thing.contains("--help") {
+        if thing.contains("-h") || thing.contains("--help") {
             printUsage()
             exit(0)
         }
