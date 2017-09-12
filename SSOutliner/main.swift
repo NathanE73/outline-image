@@ -19,7 +19,7 @@ guard args.count > 1 else {
 
 let instructions = readArgs(args)
 
-let cornerRadius: CGFloat = instructions.shouldRound ? 5.0 : 0.0
+let cornerRadius: CGFloat = 5.0
 
 for url in instructions.fileURLs {
     guard let img = NSImage(contentsOf: url) else {
@@ -28,9 +28,7 @@ for url in instructions.fileURLs {
     }
     
     // Add the outline
-    let newImg = img.addingOutline(thickness: 1,
-                                   color: NSColor.black,
-                                   cornerRadius: cornerRadius)
+    let newImg = img.addingOutline(instructions)
     
     // Save outlined image
     let writeURL: URL
@@ -41,12 +39,12 @@ for url in instructions.fileURLs {
         var newURL = url.deletingPathExtension()
         let name = newURL.lastPathComponent
         newURL.deleteLastPathComponent()
-        newURL.appendPathComponent("\(name)_ssoutlined")
+        newURL.appendPathComponent("\(name)_outlined")
         newURL.appendPathExtension("png")
         writeURL = newURL
     }
     
-    let pngData = newImg.PNGRepresentation
+    let pngData = newImg.PNGRepresentation()
     try! pngData.write(to: writeURL)
 }
 
