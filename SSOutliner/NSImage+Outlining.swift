@@ -10,87 +10,55 @@ import Cocoa
 import CoreGraphics
 
 extension NSImage {
-    func addingOutline(_ i: Instructions) -> NSImage {
+    func addingOutline(with opts: Options) -> NSImage {
         
-        let size = CGSize(width: self.size.width + i.lineThickness * 2,
-                          height: self.size.height + i.lineThickness * 2)
+        
+        let lineWidth = opts.lineThickness
+        let size = CGSize(width: self.size.width + lineWidth * 2,
+                          height: self.size.height + lineWidth * 2)
         let newImage = NSImage(size: size)
-        
 
         newImage.lockFocus() /* Start Drawing */
         
         // Draw the screenshot itself
-        draw(at: NSPoint(x: i.lineThickness, y: i.lineThickness),
+        draw(at: NSPoint(x: lineWidth, y: lineWidth),
              from: NSRect.zero,
              operation: NSCompositingOperation.copy,
              fraction: 1.0)
         
-        let path = NSBezierPath()
-        path.lineWidth = i.lineThickness
-        NSColor.black.setStroke()
-        
         // corner radii
-        let bottomLeftRadius = i.radius(for: .bottomLeft)
-        let bottomRightRadius = i.radius(for: .bottomRight)
-        let topRightRadius = i.radius(for: .topRight)
-        let topLeftRadius = i.radius(for: .topLeft)
+        let bottomLeftRadius = opts.radius(for: .bottomLeft) - lineWidth
+        let bottomRightRadius = opts.radius(for: .bottomRight) - lineWidth
+        let topRightRadius = opts.radius(for: .topRight) - lineWidth
+        let topLeftRadius = opts.radius(for: .topLeft) - lineWidth
         
-        // bottom left corner
-        if bottomLeftRadius != 0 {
-            path.appendArc(withCenter: NSPoint(x: bottomLeftRadius,
-                                               y: bottomLeftRadius),
-                           radius: bottomLeftRadius,
-                           startAngle: CGFloat.pi * 1.5,
-                           endAngle: CGFloat.pi,
-                           clockwise: false)
-        }
+        // mayberounded rect
+        let path = NSBezierPath()
+        let inset = lineWidth / 2.0
+        path.appendArc(withCenter: NSPoint(x: bottomLeftRadius + inset,
+                                           y: bottomLeftRadius + inset),
+                       radius: bottomLeftRadius,
+                       startAngle: 180,
+                       endAngle: 270)
+        path.appendArc(withCenter: NSPoint(x: size.width - bottomRightRadius - inset,
+                                           y: bottomRightRadius + inset),
+                       radius: bottomRightRadius,
+                       startAngle: 270,
+                       endAngle: 360)
+        path.appendArc(withCenter: NSPoint(x: size.width - topRightRadius - inset,
+                                           y: size.height - topRightRadius - inset),
+                       radius: topRightRadius,
+                       startAngle: 0,
+                       endAngle: 90)
+        path.appendArc(withCenter: NSPoint(x: topLeftRadius + inset,
+                                           y: size.height - topLeftRadius - inset),
+                       radius: topLeftRadius,
+                       startAngle: 90,
+                       endAngle: 180)
+        path.close()
         
-        // bottom edge
-        path.move(to: NSPoint(x: bottomLeftRadius, y: 0))
-        path.line(to: NSPoint(x: size.width - bottomRightRadius, y: 0))
-        
-        // bottom right corner
-        if bottomRightRadius != 0 {
-            path.appendArc(withCenter: NSPoint(x: size.width - bottomRightRadius,
-                                               y: bottomRightRadius),
-                           radius: bottomRightRadius,
-                           startAngle: CGFloat.pi,
-                           endAngle: CGFloat.pi / 2.0,
-                           clockwise: false)
-        }
-        
-        // right edge
-        path.move(to: NSPoint(x: size.width, y: bottomRightRadius))
-        path.line(to: NSPoint(x: size.width, y: size.height - topRightRadius))
-        
-        // top right corner
-        if topRightRadius != 0 {
-            path.appendArc(withCenter: NSPoint(x: size.width - topRightRadius,
-                                               y: size.height - topRightRadius),
-                           radius: topRightRadius,
-                           startAngle: CGFloat.pi / 2.0,
-                           endAngle: 0.0,
-                           clockwise: false)
-        }
-        
-        // top edge
-        path.move(to: NSPoint(x: size.width - topRightRadius, y: size.height))
-        path.line(to: NSPoint(x: topLeftRadius, y: size.height))
-        
-        // top left corner
-        if topLeftRadius != 0 {
-            path.appendArc(withCenter: NSPoint(x: topLeftRadius,
-                                               y: size.height - topLeftRadius),
-                           radius: topLeftRadius,
-                           startAngle: 0,
-                           endAngle: CGFloat.pi / 2.0,
-                           clockwise: false)
-        }
-        
-        // left edge
-        path.move(to: NSPoint(x: 0, y: size.height - topLeftRadius))
-        path.line(to: NSPoint(x: 0, y: bottomLeftRadius))
-        
+        path.lineWidth = lineWidth
+        NSColor.black.setStroke()
         path.stroke()
         
         newImage.unlockFocus() /* Done Drawing */

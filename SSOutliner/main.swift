@@ -17,23 +17,23 @@ guard args.count > 1 else {
     exit(EXIT_FAILURE)
 }
 
-let instructions = readArgs(args)
+let options = readArgs(args)
 
 let cornerRadius: CGFloat = 5.0
 
-for url in instructions.fileURLs {
+for url in options.fileURLs {
     guard let img = NSImage(contentsOf: url) else {
         print("Can't load image at \(url)")
         continue
     }
     
     // Add the outline
-    let newImg = img.addingOutline(instructions)
+    let newImg = img.addingOutline(with: options)
     
     // Save outlined image
     let writeURL: URL
     
-    if instructions.shouldOverwrite {
+    if options.shouldOverwrite {
         writeURL = url
     } else {
         var newURL = url.deletingPathExtension()
