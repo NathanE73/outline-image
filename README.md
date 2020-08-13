@@ -41,3 +41,4 @@ The second shot has outline applied, only rounding the two top corners, invoking
 ```
 outline-image --width 2 --radius 28 --mask 1100 Screenshot.png
 ```
+![Side-by-side views of screenshot without and with outline and rounded corners](docs/sidebyside.png)
