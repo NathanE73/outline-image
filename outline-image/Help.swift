@@ -14,4 +14,6 @@ enum Help {
     
     static let lineWidth = ArgumentHelp("The width, in pixels, of the outline to draw.",
                                         valueName: "px")
+    
+    static let overwrite = ArgumentHelp("If enabled, the source file will be replaced with the tool's output. Otherwise, the tool will output the new image at <file_path>_outlined.png.")
 }

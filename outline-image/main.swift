@@ -20,7 +20,7 @@ struct OutlineImage: ParsableCommand {
     var lineWidth: Int = 1
     
     // -o --overwrite
-    @Flag(name: [.customLong("overwrite"), .customShort("o")])
+    @Flag(name: [.customLong("overwrite"), .customShort("o")], help: Help.overwrite)
     var shouldOverwrite: Bool = false
     
     enum Error: String, Swift.Error {

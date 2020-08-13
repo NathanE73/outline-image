@@ -3,7 +3,7 @@ Tiny CLI macOS app for adding outlines to images (usually screenshots). Outlines
 
 # installation
 
-Copy `ssoutliner` into a folder in your `$PATH`. I put mine in `/usr/local/bin/`.
+Copy `outline-image` into a folder in your `$PATH`. I put mine in `/usr/local/bin/`.
 
 Eventually, I'll get around to adding a [Homebrew](https://brew.sh) recipe.
 
@@ -27,7 +27,9 @@ OPTIONS:
         represent the next three corners, moving clockwise around the rectangle.
   -w, --width <px>        The width, in pixels, of the outline to draw.
                           (default: 1)
-  -o, --overwrite
+  -o, --overwrite         If enabled, the source file will be replaced with the
+                          tool's output. Otherwise, the tool will output the
+                          new image at ./<InputFileName>_outlined.png. 
   -h, --help              Show help information.
 ```
 
