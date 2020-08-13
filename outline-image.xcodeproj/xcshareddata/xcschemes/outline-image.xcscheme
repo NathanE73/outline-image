@@ -53,18 +53,22 @@
       <CommandLineArguments>
          <CommandLineArgument
             argument = "--mask 1100"
-            isEnabled = "YES">
+            isEnabled = "NO">
          </CommandLineArgument>
          <CommandLineArgument
             argument = "--width 2"
-            isEnabled = "YES">
+            isEnabled = "NO">
          </CommandLineArgument>
          <CommandLineArgument
             argument = "--radius 28"
-            isEnabled = "YES">
+            isEnabled = "NO">
          </CommandLineArgument>
          <CommandLineArgument
             argument = "&quot;/Users/mikey/Desktop/sample.png&quot;"
+            isEnabled = "NO">
+         </CommandLineArgument>
+         <CommandLineArgument
+            argument = "--help"
             isEnabled = "YES">
          </CommandLineArgument>
       </CommandLineArguments>
