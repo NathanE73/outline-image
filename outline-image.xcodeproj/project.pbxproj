@@ -29,7 +29,7 @@
 /* Begin PBXFileReference section */
 		A62CB4C724E5912900F094FC /* CornerMask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CornerMask.swift; sourceTree = "<group>"; };
 		A62CB4C924E5918100F094FC /* Help.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Help.swift; sourceTree = "<group>"; };
-		A62FE93B1E3A8F4400B6D226 /* ssoutliner */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = ssoutliner; sourceTree = BUILT_PRODUCTS_DIR; };
+		A62FE93B1E3A8F4400B6D226 /* outline-image */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "outline-image"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A62FE93E1E3A8F4400B6D226 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		A62FE94A1E3A9D2C00B6D226 /* NSImage+Outlining.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSImage+Outlining.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -49,7 +49,7 @@
 		A62FE9321E3A8F4400B6D226 = {
 			isa = PBXGroup;
 			children = (
-				A62FE93D1E3A8F4400B6D226 /* SSOutliner */,
+				A62FE93D1E3A8F4400B6D226 /* outline-image */,
 				A62FE93C1E3A8F4400B6D226 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -57,12 +57,12 @@
 		A62FE93C1E3A8F4400B6D226 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				A62FE93B1E3A8F4400B6D226 /* ssoutliner */,
+				A62FE93B1E3A8F4400B6D226 /* outline-image */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		A62FE93D1E3A8F4400B6D226 /* SSOutliner */ = {
+		A62FE93D1E3A8F4400B6D226 /* outline-image */ = {
 			isa = PBXGroup;
 			children = (
 				A62FE93E1E3A8F4400B6D226 /* main.swift */,
@@ -70,15 +70,15 @@
 				A62CB4C924E5918100F094FC /* Help.swift */,
 				A62FE94A1E3A9D2C00B6D226 /* NSImage+Outlining.swift */,
 			);
-			path = SSOutliner;
+			path = "outline-image";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		A62FE93A1E3A8F4400B6D226 /* ssoutliner */ = {
+		A62FE93A1E3A8F4400B6D226 /* outline-image */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = A62FE9421E3A8F4400B6D226 /* Build configuration list for PBXNativeTarget "ssoutliner" */;
+			buildConfigurationList = A62FE9421E3A8F4400B6D226 /* Build configuration list for PBXNativeTarget "outline-image" */;
 			buildPhases = (
 				A62FE9371E3A8F4400B6D226 /* Sources */,
 				A62FE9381E3A8F4400B6D226 /* Frameworks */,
@@ -88,12 +88,12 @@
 			);
 			dependencies = (
 			);
-			name = ssoutliner;
+			name = "outline-image";
 			packageProductDependencies = (
 				A62CB4C524E57A0200F094FC /* ArgumentParser */,
 			);
 			productName = SSOutliner;
-			productReference = A62FE93B1E3A8F4400B6D226 /* ssoutliner */;
+			productReference = A62FE93B1E3A8F4400B6D226 /* outline-image */;
 			productType = "com.apple.product-type.tool";
 		};
 /* End PBXNativeTarget section */
@@ -113,7 +113,7 @@
 					};
 				};
 			};
-			buildConfigurationList = A62FE9361E3A8F4400B6D226 /* Build configuration list for PBXProject "SSOutliner" */;
+			buildConfigurationList = A62FE9361E3A8F4400B6D226 /* Build configuration list for PBXProject "outline-image" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -129,7 +129,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				A62FE93A1E3A8F4400B6D226 /* ssoutliner */,
+				A62FE93A1E3A8F4400B6D226 /* outline-image */,
 			);
 		};
 /* End PBXProject section */
@@ -283,7 +283,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		A62FE9361E3A8F4400B6D226 /* Build configuration list for PBXProject "SSOutliner" */ = {
+		A62FE9361E3A8F4400B6D226 /* Build configuration list for PBXProject "outline-image" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				A62FE9401E3A8F4400B6D226 /* Debug */,
@@ -292,7 +292,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		A62FE9421E3A8F4400B6D226 /* Build configuration list for PBXNativeTarget "ssoutliner" */ = {
+		A62FE9421E3A8F4400B6D226 /* Build configuration list for PBXNativeTarget "outline-image" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				A62FE9431E3A8F4400B6D226 /* Debug */,

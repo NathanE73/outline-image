@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "A62FE93A1E3A8F4400B6D226"
-               BuildableName = "ssoutliner"
-               BlueprintName = "ssoutliner"
-               ReferencedContainer = "container:SSOutliner.xcodeproj">
+               BuildableName = "outline-image"
+               BlueprintName = "outline-image"
+               ReferencedContainer = "container:outline-image.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -45,9 +45,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "A62FE93A1E3A8F4400B6D226"
-            BuildableName = "ssoutliner"
-            BlueprintName = "ssoutliner"
-            ReferencedContainer = "container:SSOutliner.xcodeproj">
+            BuildableName = "outline-image"
+            BlueprintName = "outline-image"
+            ReferencedContainer = "container:outline-image.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <CommandLineArguments>
@@ -80,9 +80,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "A62FE93A1E3A8F4400B6D226"
-            BuildableName = "ssoutliner"
-            BlueprintName = "ssoutliner"
-            ReferencedContainer = "container:SSOutliner.xcodeproj">
+            BuildableName = "outline-image"
+            BlueprintName = "outline-image"
+            ReferencedContainer = "container:outline-image.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

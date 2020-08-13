@@ -2,7 +2,7 @@
 import Cocoa
 import ArgumentParser
 
-struct Ssoutliner: ParsableCommand {
+struct OutlineImage: ParsableCommand {
 
     @Argument(help: Help.argument, completion: .file())
     var filePath: String
@@ -57,4 +57,4 @@ struct Ssoutliner: ParsableCommand {
     }
 }
 
-Ssoutliner.main()
+OutlineImage.main()
