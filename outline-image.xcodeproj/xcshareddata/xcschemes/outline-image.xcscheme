@@ -52,19 +52,19 @@
       </BuildableProductRunnable>
       <CommandLineArguments>
          <CommandLineArgument
-            argument = "--retina"
-            isEnabled = "NO">
-         </CommandLineArgument>
-         <CommandLineArgument
-            argument = "-c"
+            argument = "--mask 1100"
             isEnabled = "YES">
          </CommandLineArgument>
          <CommandLineArgument
-            argument = "1111"
+            argument = "--width 2"
             isEnabled = "YES">
          </CommandLineArgument>
          <CommandLineArgument
-            argument = "&quot;Users/mikey/Checkouts/BigNerdRanch/SwiftBook/CommandLine/figures/Screen Shot 2020-08-03 at 9.35.18 PM.png&quot;"
+            argument = "--radius 28"
+            isEnabled = "YES">
+         </CommandLineArgument>
+         <CommandLineArgument
+            argument = "&quot;/Users/mikey/Desktop/sample.png&quot;"
             isEnabled = "YES">
          </CommandLineArgument>
       </CommandLineArguments>

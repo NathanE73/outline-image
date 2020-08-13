@@ -7,15 +7,19 @@ struct OutlineImage: ParsableCommand {
     @Argument(help: Help.argument, completion: .file())
     var filePath: String
     
+    // -r --radius
     @Option(name: [.customLong("radius"), .customShort("r")], help: Help.cornerRadius)
-    var cornerRadius: Double = 0
+    var cornerRadius: Int = 0
     
+    // -m --mask
     @Option(name: .shortAndLong, help: Help.mask)
     var mask: CornerMask
     
+    // -w --width
     @Option(name: [.customLong("width"), .customShort("w")], help: Help.lineWidth)
-    var lineWidth: Double = 1
+    var lineWidth: Int = 1
     
+    // -o --overwrite
     @Flag(name: [.customLong("overwrite"), .customShort("o")])
     var shouldOverwrite: Bool = false
     
@@ -29,11 +33,12 @@ struct OutlineImage: ParsableCommand {
         // Load up the image
         let fileURL = URL(fileURLWithPath: filePath)
         guard let image = NSImage(contentsOf: fileURL) else { throw Error.invalidOrMissingImage }
+        let cgImage = image.cgImage(forProposedRect: nil, context: nil, hints: nil)!
         
         // Transform the image
-        let newImage = image.addingOutline(mask: mask,
-                                           radius: CGFloat(cornerRadius),
-                                           width: CGFloat(lineWidth))
+        let newImage = cgImage.addingOutline(mask: mask,
+                                             radius: cornerRadius,
+                                             width: lineWidth)
         
         // Figure out where to save the image (overwrite or append "_outlined"?)
         let outputURL: URL
@@ -49,11 +54,7 @@ struct OutlineImage: ParsableCommand {
         }
         
         // Save the image
-        let cgImage = newImage.cgImage(forProposedRect: nil, context: nil, hints: nil)!
-        let newRep = NSBitmapImageRep(cgImage: cgImage)
-        newRep.size = image.size // if you want the same size
-        guard let pngData = newRep.representation(using: .png, properties: [:]) else { throw Error.unableToExportPNG }
-        try pngData.write(to: outputURL)
+        newImage.write(to: outputURL)
     }
 }
 

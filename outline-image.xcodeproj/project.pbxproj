@@ -11,7 +11,7 @@
 		A62CB4C824E5912900F094FC /* CornerMask.swift in Sources */ = {isa = PBXBuildFile; fileRef = A62CB4C724E5912900F094FC /* CornerMask.swift */; };
 		A62CB4CA24E5918100F094FC /* Help.swift in Sources */ = {isa = PBXBuildFile; fileRef = A62CB4C924E5918100F094FC /* Help.swift */; };
 		A62FE93F1E3A8F4400B6D226 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = A62FE93E1E3A8F4400B6D226 /* main.swift */; };
-		A62FE94B1E3A9D2C00B6D226 /* NSImage+Outlining.swift in Sources */ = {isa = PBXBuildFile; fileRef = A62FE94A1E3A9D2C00B6D226 /* NSImage+Outlining.swift */; };
+		A62FE94B1E3A9D2C00B6D226 /* CGImage+Outlining.swift in Sources */ = {isa = PBXBuildFile; fileRef = A62FE94A1E3A9D2C00B6D226 /* CGImage+Outlining.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -31,7 +31,7 @@
 		A62CB4C924E5918100F094FC /* Help.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Help.swift; sourceTree = "<group>"; };
 		A62FE93B1E3A8F4400B6D226 /* outline-image */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "outline-image"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A62FE93E1E3A8F4400B6D226 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
-		A62FE94A1E3A9D2C00B6D226 /* NSImage+Outlining.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSImage+Outlining.swift"; sourceTree = "<group>"; };
+		A62FE94A1E3A9D2C00B6D226 /* CGImage+Outlining.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CGImage+Outlining.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,7 +68,7 @@
 				A62FE93E1E3A8F4400B6D226 /* main.swift */,
 				A62CB4C724E5912900F094FC /* CornerMask.swift */,
 				A62CB4C924E5918100F094FC /* Help.swift */,
-				A62FE94A1E3A9D2C00B6D226 /* NSImage+Outlining.swift */,
+				A62FE94A1E3A9D2C00B6D226 /* CGImage+Outlining.swift */,
 			);
 			path = "outline-image";
 			sourceTree = "<group>";
@@ -141,7 +141,7 @@
 			files = (
 				A62CB4CA24E5918100F094FC /* Help.swift in Sources */,
 				A62CB4C824E5912900F094FC /* CornerMask.swift in Sources */,
-				A62FE94B1E3A9D2C00B6D226 /* NSImage+Outlining.swift in Sources */,
+				A62FE94B1E3A9D2C00B6D226 /* CGImage+Outlining.swift in Sources */,
 				A62FE93F1E3A8F4400B6D226 /* main.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
