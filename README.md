@@ -36,5 +36,8 @@ OPTIONS:
 
 # samples
 
-![Screenshot Without Outline](docs/Screenshot.png)
-![Screenshot With Top Corners Rounded With Outline](docs/Screenshot_outlined.png)
+Here's a side-by-side of a Big Sur screenshot of a small macOS app, with and without outline.
+The second shot has outline applied, only rounding the two top corners, invoking:
+```
+outline-image --width 2 --radius 28 --mask 1100 Screenshot.png
+```
