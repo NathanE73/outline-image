@@ -1,24 +1,13 @@
-//
-//  NSImage+Outlining.swift
-//  SSOutliner
-//
-//  Created by Michael L. Ward on 1/26/17.
-//  Copyright © 2017 Michael L. Ward. All rights reserved.
-//
-
 import Cocoa
 import CoreGraphics
 
 extension NSImage {
-    func addingOutline(with opts: Options) -> NSImage {
+    func addingOutline(mask: CornerMask, radius: CGFloat, width lineWidth: CGFloat) -> NSImage {
         
         
-        let lineWidth = opts.lineThickness
         let size = CGSize(width: self.size.width + lineWidth * 2,
                           height: self.size.height + lineWidth * 2)
         let newImage = NSImage(size: size)
-
-        newImage.lockFocus() /* Start Drawing */
         
         // Draw the screenshot itself
         draw(at: NSPoint(x: lineWidth, y: lineWidth),
@@ -26,13 +15,13 @@ extension NSImage {
              operation: NSCompositingOperation.copy,
              fraction: 1.0)
         
-        // corner radii
-        let bottomLeftRadius = opts.radius(for: .bottomLeft) - lineWidth
-        let bottomRightRadius = opts.radius(for: .bottomRight) - lineWidth
-        let topRightRadius = opts.radius(for: .topRight) - lineWidth
-        let topLeftRadius = opts.radius(for: .topLeft) - lineWidth
+        // Each corner radius is 0 (if not in the mask) or the specified radius, less the line width
+        let bottomLeftRadius = (mask.contains(.bottomLeft) ? radius : 0) - lineWidth
+        let bottomRightRadius = (mask.contains(.bottomRight) ? radius : 0) - lineWidth
+        let topRightRadius = (mask.contains(.topRight) ? radius : 0) - lineWidth
+        let topLeftRadius = (mask.contains(.topLeft) ? radius : 0) - lineWidth
         
-        // mayberounded rect
+        // Define the pseudorounded rect
         let path = NSBezierPath()
         let inset = lineWidth / 2.0
         path.appendArc(withCenter: NSPoint(x: bottomLeftRadius + inset,
@@ -60,14 +49,7 @@ extension NSImage {
         path.lineWidth = lineWidth
         NSColor.black.setStroke()
         path.stroke()
-        
-        newImage.unlockFocus() /* Done Drawing */
-        
+                
         return newImage
-    }
-    
-    func PNGRepresentation() -> Data {
-        return NSBitmapImageRep(data: tiffRepresentation!)!.representation(using: .PNG,
-                                                                           properties: [:])!
     }
 }

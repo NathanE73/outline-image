@@ -1,50 +1,60 @@
-//
-//  main.swift
-//  SSOutliner
-//
-//  Created by Michael L. Ward on 1/26/17.
-//  Copyright © 2017 Michael L. Ward. All rights reserved.
-//
 
 import Cocoa
+import ArgumentParser
 
+struct Ssoutliner: ParsableCommand {
 
-let args = ProcessInfo().arguments
-
-// Show usage if they run without any arguments.
-guard args.count > 1 else {
-    printUsage()
-    exit(EXIT_FAILURE)
-}
-
-let options = readArgs(args)
-
-let cornerRadius: CGFloat = 5.0
-
-for url in options.fileURLs {
-    guard let img = NSImage(contentsOf: url) else {
-        print("Can't load image at \(url)")
-        continue
+    @Argument(help: Help.argument, completion: .file())
+    var filePath: String
+    
+    @Option(name: [.customLong("radius"), .customShort("r")], help: Help.cornerRadius)
+    var cornerRadius: Double = 0
+    
+    @Option(name: .shortAndLong, help: Help.mask)
+    var mask: CornerMask
+    
+    @Option(name: [.customLong("width"), .customShort("w")], help: Help.lineWidth)
+    var lineWidth: Double = 1
+    
+    @Flag(name: [.customLong("overwrite"), .customShort("o")])
+    var shouldOverwrite: Bool = false
+    
+    enum Error: String, Swift.Error {
+        case invalidOrMissingImage
+        case unableToExportPNG
     }
     
-    // Add the outline
-    let newImg = img.addingOutline(with: options)
-    
-    // Save outlined image
-    let writeURL: URL
-    
-    if options.shouldOverwrite {
-        writeURL = url
-    } else {
-        var newURL = url.deletingPathExtension()
-        let name = newURL.lastPathComponent
-        newURL.deleteLastPathComponent()
-        newURL.appendPathComponent("\(name)_outlined")
-        newURL.appendPathExtension("png")
-        writeURL = newURL
+    func run() throws {
+        
+        // Load up the image
+        let fileURL = URL(fileURLWithPath: filePath)
+        guard let image = NSImage(contentsOf: fileURL) else { throw Error.invalidOrMissingImage }
+        
+        // Transform the image
+        let newImage = image.addingOutline(mask: mask,
+                                           radius: CGFloat(cornerRadius),
+                                           width: CGFloat(lineWidth))
+        
+        // Figure out where to save the image (overwrite or append "_outlined"?)
+        let outputURL: URL
+        if shouldOverwrite {
+            outputURL = fileURL
+        } else {
+            var newURL = fileURL.deletingPathExtension()
+            let name = newURL.lastPathComponent
+            newURL.deleteLastPathComponent()
+            newURL.appendPathComponent("\(name)_outlined")
+            newURL.appendPathExtension("png")
+            outputURL = newURL
+        }
+        
+        // Save the image
+        let cgImage = newImage.cgImage(forProposedRect: nil, context: nil, hints: nil)!
+        let newRep = NSBitmapImageRep(cgImage: cgImage)
+        newRep.size = image.size // if you want the same size
+        guard let pngData = newRep.representation(using: .png, properties: [:]) else { throw Error.unableToExportPNG }
+        try pngData.write(to: outputURL)
     }
-    
-    let pngData = newImg.PNGRepresentation()
-    try! pngData.write(to: writeURL)
 }
 
+Ssoutliner.main()
