@@ -1,0 +1,3 @@
+import ImageOutliner
+
+OutlineImage.main()

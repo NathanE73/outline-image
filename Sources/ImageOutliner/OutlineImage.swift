@@ -1,8 +1,7 @@
-
 import Cocoa
 import ArgumentParser
 
-struct OutlineImage: ParsableCommand {
+public struct OutlineImage: ParsableCommand {
 
     @Argument(help: Help.argument, completion: .file())
     var filePath: String
@@ -28,7 +27,10 @@ struct OutlineImage: ParsableCommand {
         case unableToExportPNG
     }
     
-    func run() throws {
+    public init() {
+    }
+    
+    public func run() throws {
         
         // Load up the image
         let fileURL = URL(fileURLWithPath: filePath)
@@ -57,5 +59,3 @@ struct OutlineImage: ParsableCommand {
         newImage.write(to: outputURL)
     }
 }
-
-OutlineImage.main()
